@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback } from "react";
+import React, { ReactElement, useCallback, ChangeEvent } from "react";
 import GameListRender from "./GameList.Render";
 import useFetch from "../../hooks/useFetch";
 import { Filter } from "./types";
