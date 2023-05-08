@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { Game } from "../../types";
 import { API_HOST, API_KEY } from "../../components/GameList/constants";
@@ -15,6 +16,7 @@ import {
   OuterContainer,
   Button,
   ButtonContainer,
+  Navigate,
 } from "./styles";
 
 type Props = {
@@ -22,32 +24,42 @@ type Props = {
 };
 
 const GameDetail = ({ game }: Props) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/");
+  };
   return (
-    <OuterContainer>
-      <Container>
-        <Title>{game.title}</Title>
-        <DescriptionShort>{game.short_description}</DescriptionShort>
-        <Flex>
-          <Img src={game.thumbnail} alt={game.title} />
-          <Description>{game.description}</Description>
-        </Flex>
-        <Flex2>
-          <Details>
-            <span style={{ color: "#fff" }}>Release Date:</span>{" "}
-            {game.release_date}
-          </Details>
-          <Details>
-            <span style={{ color: "#fff" }}>Publisher:</span> {game.publisher}
-          </Details>
-          <Details>
-            <span style={{ color: "#fff" }}>Genre:</span> {game.genre}
-          </Details>
-        </Flex2>
-        <ButtonContainer>
-          <Button>Play it Now</Button>
-        </ButtonContainer>
-      </Container>
-    </OuterContainer>
+    <>
+      <OuterContainer>
+        <Container>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <Title>{game.title}</Title>
+            <Navigate onClick={handleNavigate}>Database</Navigate>
+          </div>
+          <DescriptionShort>{game.short_description}</DescriptionShort>
+          <Flex>
+            <Img src={game.thumbnail} alt={game.title} />
+            <Description>{game.description}</Description>
+          </Flex>
+          <Flex2>
+            <Details>
+              <span style={{ color: "#fff" }}>Release Date:</span>{" "}
+              {game.release_date}
+            </Details>
+            <Details>
+              <span style={{ color: "#fff" }}>Publisher:</span> {game.publisher}
+            </Details>
+            <Details>
+              <span style={{ color: "#fff" }}>Genre:</span> {game.genre}
+            </Details>
+          </Flex2>
+          <ButtonContainer>
+            <Button>Play it Now</Button>
+          </ButtonContainer>
+        </Container>
+      </OuterContainer>
+    </>
   );
 };
 

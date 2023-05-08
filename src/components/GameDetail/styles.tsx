@@ -1,5 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { primaryTextColor, secondaryTextColor } from "../../styles/theme";
+
+const SlowShow = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -9,6 +20,8 @@ export const Container = styled.div`
   padding: 20px;
   background-color: #222;
   border-radius: 4px;
+  animation: ${SlowShow} 0.5s ease-in-out forwards;
+  overflow: auto;
 `;
 
 export const Flex = styled.div`
@@ -86,6 +99,10 @@ export const Button = styled.button`
   &:active {
     font-size: 10px;
   }
+
+  &:hover {
+    background: #636161;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -93,4 +110,22 @@ export const ButtonContainer = styled.div`
   height: 50px;
   display: flex;
   justify-content: center;
+`;
+
+export const Navigate = styled.button`
+  padding: 10px 20px;
+  margin-left: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  background: #333;
+  color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background: #636161;
+  }
+  &:active {
+    font-size: 0.5rem;
+  }
 `;

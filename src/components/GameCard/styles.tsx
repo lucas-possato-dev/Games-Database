@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import {
   backgroundColor,
@@ -9,12 +9,24 @@ import {
 } from "../../styles/theme";
 import { breakpoints } from "../../styles/breakpoints";
 
+const SlowShow = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+`;
+
 export const StyledLink = styled(Link)`
   display: inline-block;
   width: 100%;
   background-color: ${secondaryColor};
   border-radius: 4px;
   text-decoration: none;
+  animation: ${SlowShow} 0.5s ease-in-out forwards;
 `;
 
 export const Img = styled.img`
