@@ -1,3 +1,4 @@
+import React from "react";
 import { ChangeEvent, ReactElement, useState } from "react";
 import { Game } from "../../types";
 import GameCard from "../GameCard/GameCard";
@@ -12,6 +13,10 @@ interface Props {
 
 const GameList = ({ err, games, onFilterChange }: Props): ReactElement => {
   const [loading, setLoading] = useState(true);
+
+  React.useEffect(() => {
+    if (games.length > 0) setLoading(false);
+  }, [games.length]);
 
   if (err) {
     return <p>Unable to fetch games</p>;
